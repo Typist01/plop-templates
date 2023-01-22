@@ -1,16 +1,35 @@
 export default function (plop) {
     // controller generator
-    plop.setGenerator('controller', {
-        description: 'application controller logic',
+    plop.setGenerator('component', {
+        description: 'React Component',
         prompts: [{
             type: 'input',
-            name: 'name',
-            message: 'controller name please'
+            name: 'componentName',
+            message: 'Component name please'
         }],
-        actions: [{
+        actions: (data) => {
+            // TODO change casing here
+            // data.componentName = plop.getHelper("properCase/pascalCase")(data.componentName)
+            // console.log(plop.getHelperList())
+            return(
+
+
+         [{
             type: 'add',
-            path: 'src/{{name}}.js',
-            templateFile: 'plop-templates/controller.hbs'
-        }]
+            path: 'src/Components/{{componentName}}/{{componentName}}.tsx',
+            templateFile: 'plop-templates/component.hbs'
+        },
+    {
+        type: 'add',
+        path: 'src/Components/{{componentName}}/index.ts',
+        templateFile: 'plop-templates/index.hbs',
+    },
+    {
+        type: 'add',
+        path: 'src/Components/{{componentName}}/stories/index.stories.tsx',
+        templateFile: 'plop-templates/stories.hbs',
+    }
+])
+}
     });
 };
