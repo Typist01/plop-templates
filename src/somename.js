@@ -1,0 +1,5 @@
+const newFunction = () => {
+
+    return(somename)
+
+}
